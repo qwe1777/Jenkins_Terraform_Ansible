@@ -1,0 +1,35 @@
+---
+- name: Build VM installations
+  hosts: build
+  become: true
+
+  tasks:
+
+  - name: Build VM installations
+    apt: name="{{item}}" state=present update_cache=yes
+    with_items:
+     - maven
+     - git
+     - docker.io
+
+  - name: Clearing the repository directory
+    ansible.builtin.file:
+      path: /src/build/
+      state: absent  
+
+  - name: Copy Github repository
+    git:
+      repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+      dest: /src/build/boxfuse
+
+- name: Prod VM installations
+  hosts: prod
+  become: true
+
+  tasks:
+ 
+  - name: Install Docker package
+    apt:
+     name: docker.io
+     state: present
+     update_cache: yes
