@@ -7,7 +7,7 @@ pipeline {
         Build_IP_Addr = 'build-vm'
         Prod_IP_Addr = 'prod-vm'
         Docker_pass = 'pass_for_Docker'
-        Version = '2.0'
+        Version = '7.0'
     }
 
     stages {
