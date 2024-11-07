@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git') {
            steps{
-                git branch: 'main', url: 'https://github.com/qwe1777/Jenkins.git'
+                git branch: 'main', url: 'https://github.com/qwe1777/Jenkins_Terraform_Ansible.git'
             }
         }
         stage('Terraform, create Yandex VM') {
