@@ -27,7 +27,14 @@ pipeline {
             }
         }
         
-   
+        stage('Sleep') {
+        steps {
+            script {
+                print('Waiting for SSH connection')
+                sleep(150)    
+            }
+        }
+        }
         
         stage('Ansible, install packages') {
             steps{
